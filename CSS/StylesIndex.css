@@ -1,0 +1,101 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  color: black;
+  background-color: #fcfcfc;
+}
+
+h2 {
+  padding: 1.7%;
+  font-weight: 500;
+}
+
+h3 {
+  font-weight: 460;
+}
+
+.header {
+  background-color: rgba(0,0,0,0.8);
+  padding-left: 1.7%;
+  padding-right: 1.7%;
+}
+
+.navbar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-brand img {
+  height: auto;
+  width: 80px;
+}
+
+.navbar-nav {
+  position: absolute; /* Permite posicionar la lista de enlaces en el centro de la barra de navegación */
+  left: 50%; /* Coloca el centro de la lista al medio de la barra de navegación */
+  transform: translateX(-50%); /* Ajusta la posición para centrarla */
+  display: flex;
+  justify-content: center; /* Asegura que los elementos de la lista estén centrados */
+}
+
+.nav-item {
+  list-style: none;
+  margin: 0 5%;
+}
+
+.nav-link {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-decoration: none;
+  color: white;
+  font-size: 22px;
+  padding: 30px 15px;
+  font-weight: 520;
+  font-size:x-large;
+}
+
+.nav-link:hover {
+  text-decoration: none;
+  color: #fc5c47;
+}
+.btn a{
+  color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-decoration: none;
+}
+.btn-login {  
+  text-decoration: none;
+  padding: 10px 20px;
+  background-color: #fc5c47;
+  color: white;
+  border-radius: 11px;
+  margin-left: auto;
+  border: 1px;
+}
+
+.hero {
+  color: black;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #f4f4f4;
+}
+
+.hero h1 {
+  font-size: 4rem;
+}
+
+.footer {
+  background-color: rgba(0,0,0,0.8);
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+}

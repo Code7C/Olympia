@@ -1,0 +1,28 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+form{
+  background-color: #24303c;
+  margin: auto;
+  margin-top: 35px;
+  width: 300px;
+  padding: 10px;
+  border-radius: 5px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.field{
+  width: 80%;
+  background-color: #24303c;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 1px;
+  border: 1px solid #1f53c5; 
+  font-size: 18px;
+} 
+.boton{
+  border: none;
+  width: 100%;
+  padding: 10px;
+  margin: 20px 0;
+} 
