@@ -1,3 +1,22 @@
+#startTour {
+  width: 100%;
+  height: 40px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 10px;
+  background-color: #4CAF50; /* Color de fondo */
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+  outline: none;
+}
+
+#startTour:hover {
+  background-color: #45a049; /* Color al pasar el ratón */
+  transition: 0.3s;
+}
+  
+
 body {
   margin: 0;
   padding: 0;
@@ -39,6 +58,7 @@ form .user{
   background: none;
   outline: none;
 }
+
 .pass input{
   width: 100%;
   padding: 0 5px;

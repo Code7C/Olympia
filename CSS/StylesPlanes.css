@@ -153,3 +153,17 @@
   font-size: 1rem;
   color: #555;
 }
+.btn-add {
+  background-color: #28a745; 
+  color: white; 
+  border: none; 
+  border-radius: 5px; 
+  padding: 10px 15px; 
+  cursor: pointer;
+  font-size: 18px; 
+  margin-left: auto; 
+}
+.btn-add a {
+  color: white; 
+  text-decoration: none;
+}

@@ -3,7 +3,11 @@ session_start();
 if (!isset($_SESSION['id']))
 {
     header("Location: /HTML/Login.php");  
-}  
+}
+include "../PHP/conexion.php";
+$sql = "SELECT * FROM ejercicios_gimnasio";
+$result = $cnx->query($sql); 
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -12,7 +16,10 @@ if (!isset($_SESSION['id']))
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Sitio Web</title>
     <link rel="stylesheet" href="/CSS/StylesPlanes.css">
-    <script src="/JS/Index.js"></script>
+    <link rel="stylesheet" href="/CSS/StylesAgregarEjercicio.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intro.js/minified/introjs.min.css">
+    <script src="/JS/Index.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/intro.js/minified/intro.min.js"></script>
 </head>
 <body>
     <header class="header">
@@ -31,10 +38,12 @@ if (!isset($_SESSION['id']))
                     <li class="nav-item">
                         <a class="nav-link" href="/HTML/playlist.php">Planes</a>
                     </li>
-                </ul>
+                </ul>            
                 <div class="btn">
-                <button class="btn-login"><a href="/PHP/cerrarSesion.php">Cerrar Sesion</a></button>
-                </div>                
+                    <button class="btn-login"><a href="/PHP/cerrarSesion.php" data-intro='Cerrar sesion' data-step='1'>Cerrar Sesion</a></button>
+                    <button class="btn-add" onclick="openModal()" data-intro='Cargar ejercicios' data-step='2'>+</button> 
+                    <button id="startTour">Iniciar Tour</button>
+                </div>        
             </nav>
         </div>
     </header>
@@ -42,161 +51,50 @@ if (!isset($_SESSION['id']))
         <div class="container">
             <h2>Ejercicios de Gimnasio</h2>
             <div class="card-container">
-                <div class="card">
-                    <img src="/src/barbell-calf-raise-400.jpg">
-                    <div class="card-content">
-                        <h3>Sentadilla</h3>
-                        <p>Ejercicio para trabajar los músculos de las piernas y glúteos.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="/src/bench-press-400.jpg">
-                    <div class="card-content">
-                        <h3>Press de Banca</h3>
-                        <p>Ejercicio que se enfoca en el pecho, tríceps y hombros.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="/src/cable-crunch-400.jpg">
-                    <div class="card-content">
-                        <h3>Dominadas</h3>
-                        <p>Ejercicio para desarrollar la fuerza en la espalda y bíceps.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="/src/cable-lateral-raise-800.jpg">
-                    <div class="card-content">
-                        <h3>Press Militar</h3>
-                        <p>Ejercicio que se enfoca en los hombros y los tríceps.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="/src/dips-400.jpg">
-                    <div class="card-content">
-                        <h3>Remo con Barra</h3>
-                        <p>Ejercicio para fortalecer los músculos de la espalda.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="/src/dumbbell-bulgarian-split-squat-800.jpg">
-                    <div class="card-content">
-                        <h3>Peso Muerto</h3>
-                        <p>Ejercicio compuesto para la parte inferior del cuerpo y espalda.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="/src/hammer-curl-400.jpg">
-                    <div class="card-content">
-                        <h3>Curl de Bíceps</h3>
-                        <p>Ejercicio para fortalecer los músculos del bíceps.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="/src/hanging-knee-raise-400.jpg">
-                    <div class="card-content">
-                        <h3>Extensión de Tríceps</h3>
-                        <p>Ejercicio que se enfoca en los tríceps.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="/src/hip-adduction-800.jpg">
-                    <div class="card-content">
-                        <h3>Abdominales</h3>
-                        <p>Ejercicio para fortalecer la zona media del cuerpo.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="/src/incline-dumbbell-bench-press-400.jpg">
-                    <div class="card-content">
-                        <h3>Plancha</h3>
-                        <p>Ejercicio isométrico para fortalecer el core.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="/src/incline-dumbbell-curl-400.jpg">
-                    <div class="card-content">
-                        <h3>Step-up</h3>
-                        <p>Ejercicio para trabajar piernas y glúteos.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="/src/leg-extension-800.jpg">
-                    <div class="card-content">
-                        <h3>Fondos de Tríceps</h3>
-                        <p>Ejercicio para el desarrollo del tríceps y pecho.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="/src/lying-dumbbell-tricep-extension-400.jpg">
-                    <div class="card-content">
-                        <h3>Press de Piernas</h3>
-                        <p>Ejercicio para fortalecer los músculos de las piernas.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="/src/lying-leg-curl-400.jpg">
-                    <div class="card-content">
-                        <h3>Burpees</h3>
-                        <p>Ejercicio cardiovascular que trabaja todo el cuerpo.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="/src/machine-chest-fly-400.jpg">
-                    <div class="card-content">
-                        <h3>Elevación Lateral</h3>
-                        <p>Ejercicio para los hombros.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="/src/one-arm-seated-cable-row-800.jpg">
-                    <div class="card-content">
-                        <h3>Sentadilla Hack</h3>
-                        <p>Variante de la sentadilla que enfatiza las piernas.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="/src/pull-ups-400.jpg">
-                    <div class="card-content">
-                        <h3>Hip Thrust</h3>
-                        <p>Ejercicio para fortalecer glúteos y parte baja de la espalda.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="/src/romanian-deadlift-800.jpg">
-                    <div class="card-content">
-                        <h3>Crunch Abdominal</h3>
-                        <p>Ejercicio clásico para la zona abdominal.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="/src/seated-dumbbell-shoulder-press-800.jpg">
-                    <div class="card-content">
-                        <h3>Crunch Abdominal</h3>
-                        <p>Ejercicio clásico para la zona abdominal.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="/src/smith-machine-squat-800.jpg">
-                    <div class="card-content">
-                        <h3>Crunch Abdominal</h3>
-                        <p>Ejercicio clásico para la zona abdominal.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="/src/tricep-rope-pushdown-400.jpg">
-                    <div class="card-content">
-                        <h3>Crunch Abdominal</h3>
-                        <p>Ejercicio clásico para la zona abdominal.</p>
-                    </div>
-                </div>
+            <?php if ($result->num_rows > 0):
+                    $T=false;
+                    ?>
+                    <?php while($row = $result->fetch_assoc()): ?>
+                        <div class="card">
+                            <div class="card-content">
+                            <img src="<?php echo $row['imagen_url']; ?>">
+                                <h3><?php echo $row['nombre']; ?></h3>
+                                <p><?php echo $row['descripcion']; ?></p>
+                            </div>
+                        </div>
+                    <?php endwhile; ?>
+                <?php else: ?>
+                    <p>No hay ejercicios disponibles en este momento.</p>
+                <?php endif; ?>
             </div>
-        </div>
     </section>
-        
     <footer class="footer">
         <div class="container">
             <p>&copy; 2024 Mi Sitio Web. Todos los derechos reservados.</p>
         </div>
     </footer>
+<dialog id="exerciseDialog">
+    <div class="modal-overlay" id="modal-overlay" style="display: none;">
+        <div class="modal">
+            <button class="close-button" onclick="closeModal()">✖</button>
+            <h1>Agregar un Ejercicio</h1>
+            <form action="/PHP/agregarEjercicio.php" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="nombre">Nombre del ejercicio:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="descripcion">Descripción del ejercicio:</label>
+                    <textarea id="descripcion" name="descripcion" rows="4" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="imagen">Subir imagen:</label>
+                    <input type="file" id="imagen" name="imagen" accept="image/*" required>
+                </div>
+                <input type="submit" value="Cargar Ejercicio" class="btn">
+            </form>
+        </div>
+    </div>
+</dialog>
 </body>
 </html>
