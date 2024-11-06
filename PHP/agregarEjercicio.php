@@ -7,9 +7,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($imagen) && $imagen['error'] === 0) {
         $imagenNombre = basename($imagen['name']); 
         $imagenTmpName = $imagen['tmp_name'];
-        $imagenDestino = "src/" . $imagenNombre;
+        $imagenDestino = "../src/" . $imagenNombre;
         if (move_uploaded_file($imagenTmpName, $imagenDestino)) {
-            $sql = "INSERT INTO ejercicios (nombre, descripcion, imagen) VALUES ('$nombre', '$descripcion', '$imagenDestino')";
+            $sql = "INSERT INTO ejercicios_gimnasio (nombre, descripcion, imagen_url) VALUES ('$nombre', '$descripcion', '$imagenDestino')";
             if (mysqli_query($cnx, $sql)) {
                 echo "Ejercicio agregado correctamente.";
             } else {

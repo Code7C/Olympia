@@ -48,25 +48,24 @@ $result = $cnx->query($sql);
         </div>
     </header>
     <section class="ejercicios" id="ejercicios">
-        <div class="container">
-            <h2>Ejercicios de Gimnasio</h2>
-            <div class="card-container">
-            <?php if ($result->num_rows > 0):
-                    $T=false;
-                    ?>
-                    <?php while($row = $result->fetch_assoc()): ?>
-                        <div class="card">
-                            <div class="card-content">
-                            <img src="<?php echo $row['imagen_url']; ?>">
-                                <h3><?php echo $row['nombre']; ?></h3>
-                                <p><?php echo $row['descripcion']; ?></p>
-                            </div>
-                        </div>
-                    <?php endwhile; ?>
-                <?php else: ?>
-                    <p>No hay ejercicios disponibles en este momento.</p>
-                <?php endif; ?>
+    <div class="card-container">
+    <?php if ($result->num_rows > 0): ?>
+        <?php while($row = $result->fetch_assoc()): ?>
+            <div class="card">
+            <a href="/HTML/ejercicios.php?id=<?php echo $row['id']; ?>">
+                    <div class="card-content">
+                        <img src="<?php echo htmlspecialchars($row['imagen_url']); ?>" alt="<?php echo htmlspecialchars($row['nombre']); ?>">
+                        <h3><?php echo htmlspecialchars($row['nombre']); ?></h3>
+                        <p><?php echo htmlspecialchars($row['descripcion']); ?></p>
+                    </div>
+                </a>
             </div>
+        <?php endwhile; ?>
+    <?php else: ?>
+        <p>No hay ejercicios disponibles en este momento.</p>
+    <?php endif; ?>
+</div>
+
     </section>
     <footer class="footer">
         <div class="container">
