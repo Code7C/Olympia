@@ -62,8 +62,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
       </div>
         <input type="submit" value="Iniciar"data-intro="Haz click en le boton para iniciar sesion" data-step="4">
     </form>
-
-    <button id="startTour">Iniciar Tour</button>
     </div>
    
 </body>

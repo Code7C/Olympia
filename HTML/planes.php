@@ -14,7 +14,7 @@ $result = $cnx->query($sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Sitio Web</title>
+    <title>Heracles</title>
     <link rel="stylesheet" href="/CSS/StylesPlanes.css">
     <link rel="stylesheet" href="/CSS/StylesAgregarEjercicio.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intro.js/minified/introjs.min.css">
@@ -40,33 +40,48 @@ $result = $cnx->query($sql);
                     </li>
                 </ul>            
                 <div class="btn">
-                    <button class="btn-login"><a href="/PHP/cerrarSesion.php" data-intro='Cerrar sesion' data-step='1'>Cerrar Sesion</a></button>
                     <button class="btn-add" onclick="openModal()" data-intro='Cargar ejercicios' data-step='2'>+</button> 
-                    <button id="startTour">Iniciar Tour</button>
                 </div>        
-            </nav>
+                <nav class="NavBar">
+    <button class="dropdown-btn" onclick="toggleMenu()"><img src="/src/menu-tres-barras-delineadas.png" alt=""></button>
+    <ul class="dropdown-menu" id="dropdownMenu">
+        <li><a href="/HTML/misEjercicios.php">Mis Ejercicios</a></li>
+        <li><a href="/HTML/entrenadores.html">Sobre Nosotros</a></li>
+        <li><button id="startTour">Iniciar Tutorial</button></li>
+        <div class="btn">
+                <button class="btn-login"><a href="/PHP/cerrarSesion.php" data-intro='Cerrar sesion' data-step='1'>Cerrar Sesion</a></button>      
+            </div>
+    </ul>
+</nav>
+            </nav>  
         </div>
-    </header>
+    </header><br>
     <section class="ejercicios" id="ejercicios">
     <div class="card-container">
-    <?php if ($result->num_rows > 0): ?>
-        <?php while($row = $result->fetch_assoc()): ?>
-            <div class="card">
-            <a href="/HTML/ejercicios.php?id=<?php echo $row['id']; ?>">
-                    <div class="card-content">
-                        <img src="<?php echo htmlspecialchars($row['imagen_url']); ?>" alt="<?php echo htmlspecialchars($row['nombre']); ?>">
-                        <h3><?php echo htmlspecialchars($row['nombre']); ?></h3>
-                        <p><?php echo htmlspecialchars($row['descripcion']); ?></p>
-                    </div>
-                </a>
-            </div>
-        <?php endwhile; ?>
-    <?php else: ?>
-        <p>No hay ejercicios disponibles en este momento.</p>
-    <?php endif; ?>
-</div>
+    <?php
+include '../PHP/conexion.php';
+$sql = "SELECT id, nombre, descripcion, imagen_url FROM ejercicios_gimnasio WHERE es_publico = TRUE";
+$result = mysqli_query($cnx, $sql);
 
-    </section>
+            if ($result->num_rows > 0): 
+                $T = false; 
+                ?>
+                <?php while($row = $result->fetch_assoc()): ?>
+                    <div class="card">
+                        <a href="/HTML/ejercicios.php?id=<?php echo $row['id']; ?>">
+                            <div class="card-content" <?php if (!$T) echo "data-intro='Muestra del ejercicio' data-step='3'"; $T = true; ?>>
+                                <img src="<?php echo htmlspecialchars($row['imagen_url']); ?>" alt="<?php echo htmlspecialchars($row['nombre']); ?>">
+                                <h3><?php echo htmlspecialchars($row['nombre']); ?></h3>
+                                <p><?php echo htmlspecialchars($row['descripcion']); ?></p>
+                            </div>
+                        </a>
+                    </div>
+                <?php endwhile; ?>
+            <?php else: ?>
+                <p>No hay ejercicios disponibles en este momento.</p>
+            <?php endif; ?>
+</div>
+</section>
     <footer class="footer">
         <div class="container">
             <p>&copy; 2024 Mi Sitio Web. Todos los derechos reservados.</p>

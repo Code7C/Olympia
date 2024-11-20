@@ -47,10 +47,19 @@ $result = $cnx->query($sql);
                     </li>
                 </ul>
                 <div class="btn">
-                <button class="btn-login" data-intro='Cerrar Sesion' data-step='1'><a href="/PHP/cerrarSesion.php">Cerrar Sesion</a>
-                <button id="startTour">Iniciar Tour</button>
             </button>
                 </div>
+                <nav class="NavBar">
+    <button class="dropdown-btn" onclick="toggleMenu()"><img src="/src/menu-tres-barras-delineadas.png" alt=""></button>
+    <ul class="dropdown-menu" id="dropdownMenu">
+        <li><a href="/HTML/misEjercicios.php">Mis Ejercicios</a></li>
+        <li><a href="/HTML/entrenadores.html">Sobre Nosotros</a></li>
+        <li><button id="startTour">Iniciar Tour</button></li>
+        <div class="btn">
+                <button class="btn-login"><a href="/PHP/cerrarSesion.php" data-intro='Cerrar sesion' data-step='1'>Cerrar Sesion</a></button>      
+            </div>
+    </ul>
+</nav>    
             </nav>
         </div>
     </header>
@@ -64,7 +73,7 @@ $result = $cnx->query($sql);
                     <?php while($row = $result->fetch_assoc()): ?>
                         <div class="card">
                             <div class="card-content">
-                                <h3><?php echo $row['nombre']; ?></h3>
+                                <h3><a download="Hola" href="/HTML/entrenadores.html"><?php echo $row['nombre']; ?></a></h3>
                                 <p><?php echo $row['descripcion']; ?></p>
                                 <form method="post" onsubmit="likePlan(event, <?php echo $row['like_id']; ?>)">
                                 <input type="hidden" name="like_id" data value="<?php echo $row['like_id']; ?>">

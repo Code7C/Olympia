@@ -64,16 +64,6 @@ h3 {
   color: #fc5c47;
 }
 
-.btn-login {  
-  text-decoration: none;
-  padding: 10px 20px;
-  background-color: #fc5c47;
-  color: white;
-  border-radius: 11px;
-  margin-left: auto;
-  border: 1px;
-}
-
 .hero {
   color: black;
   height: 400px;
@@ -178,4 +168,89 @@ color: #555;
 
 .like-btn:focus {
   outline: none; 
+}
+.navbar {
+  background-color: #333;
+  padding: 10px;
+  text-align: center;
+}
+
+.dropdown-btn {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.dropdown-btn:hover {
+  background-color: #444;
+}
+
+.dropdown-btn {
+  position: relative; 
+}
+
+.dropdown-menu {
+  display: none; 
+  position: absolute;
+  top: 90%; 
+  left: 93%; 
+  transform: translateX(-50%); 
+  width: 200px; 
+  list-style: none;
+  padding: 10px;
+  margin: 0;
+  background-color: #444;
+  text-align: center;
+  border-radius: 15px;
+}
+
+.dropdown-menu li {
+  width: 100%;
+  text-decoration: none;
+}
+
+.dropdown-menu li a {
+  color: #fff;
+  padding: 10px;
+  text-decoration: none;
+  display: block;
+}
+
+
+.dropdown-btn img {
+  width: 50px; 
+  height: auto;
+}
+
+
+#startTour {
+  background-color: #fc5c47;
+  color: white;
+  border: none;
+  border-radius: 11px;
+  padding: 5px 20px;
+  cursor: pointer;
+  font-size: 18px;
+  width: 100%; 
+  text-align: center;
+  margin-top: 5px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 520;
+} 
+
+#startTour:hover {
+  background-color: #e04436; 
+}
+.btn-login {  
+  text-decoration: none;
+  padding: 5px 20px;
+  background-color: #fc5c47;
+  color: white;
+  border-radius: 11px;
+  margin-left: auto;
+  margin-top: 10px;
+  border: 1px;
 }

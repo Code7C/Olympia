@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrenadores</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .card img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            object-fit: cover;
+        }
+
+        .card h3 {
+            font-size: 1.2em;
+            margin: 50% 0 5px;
+            color: #333;
+        }
+
+        .card p {
+            font-size: 0.9em;
+            color: #666;
+            margin: 5px 0;
+        }
+
+        .card a {
+            text-decoration: none;
+            color: #3498db;
+            font-size: 0.9em;
+        }
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+        .card a img{
+            width: 35px;
+            height: auto;
+        }
+
+
+        
+    </style>
+</head>
+<body>
+
+
+    <h1>Equipo y Contacto</h1>
+    <div class="container">
+        <div class="card">
+            <img src="/src/Lauti.jpeg">
+            <h3>Lautaro Kalbermatten</h3>
+            <p>Experiencia en levantamiento de pesas enfocado a la ganancia de masa muscular. Conocimientos en biomecánica.</p>
+            <p>Correo: lautarokalber@hotmail.com</p>
+            <a href="https://www.instagram.com/entrenador1" target="_blank"><img src="/src/instagram.png" class="instagram"></a>
+        </div>
+        <div class="card">
+            <img src="/src/Mateo.jpeg" alt="Foto del Entrenador 2">
+            <h3>Mateo Moreschi</h3>
+            <p>Especialista en nutrición deportiva y entrenamiento personalizado.</p>
+            <p>Correo: mateomoreschi5@gmail.com</p>
+            <a href="https://www.instagram.com/entrenador2" target="_blank"><img src="/src/instagram.png" class="instagram"></a>
+        </div>
+        <div class="card">
+            <img src="/src/Santi.jpg" alt="Foto del Entrenador 3">
+            <h3>Santiago Ambrogi</h3>
+            <p>Experto en entrenamiento de resistencia y cardio. Más de 10 años de experiencia.</p>
+            <p>Correo: santiagoambrogi72@gmail.com</p>
+            <a href="https://www.instagram.com/entrenador3" target="_blank"><img src="/src/instagram.png" class="instagram"></a>
+        </div>
+        <div class="card">
+            <img src="/src/Titi.jpeg" alt="Foto del Entrenador 4">
+            <h3>Titi</h3>
+            <p>Hace yoga.</p>
+            <p>Correo: valezebru@gmail.com</p>
+            <a href="https://www.instagram.com/entrenador4" target="_blank"><img src="/src/instagram.png" class="instagram"></a>
+        </div>
+    </div>
+</body>
+</html>

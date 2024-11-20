@@ -25,6 +25,19 @@ if (isset($_GET['id'])) {
         echo "Ejercicio no encontrado.";
         exit;
     }
+
+    // Consultamos los pasos del ejercicio en la base de datos
+    $sql_pasos = "SELECT numero_paso, descripcion FROM pasos_ejercicio WHERE ejercicio_id = ? ORDER BY numero_paso ASC";
+    $stmt_pasos = $cnx->prepare($sql_pasos);
+    $stmt_pasos->bind_param("i", $id);
+    $stmt_pasos->execute();
+    $result_pasos = $stmt_pasos->get_result();
+
+    // Almacenamos los pasos en un array
+    $pasos = [];
+    while ($row = $result_pasos->fetch_assoc()) {
+        $pasos[] = $row;
+    }
 } else {
     echo "ID de ejercicio no especificado.";
     exit;
@@ -55,12 +68,15 @@ if (isset($_GET['id'])) {
                 <p><?php echo htmlspecialchars($ejercicio['descripcion']); ?></p>
                 <div class="steps-container">
                     <h2>Pasos a seguir</h2>
-                    <ol class="steps">
-                        <li>Comienza de pie, con los pies al ancho de los hombros.</li>
-                        <li>Flexiona las rodillas y baja los glúteos como si te estuvieras sentando en una silla.</li>
-                        <li>Asegúrate de que tus rodillas no pasen la punta de los pies.</li>
-                        <li>Sube lentamente a la posición inicial.</li>
-                    </ol>
+                    <?php if (!empty($pasos)): ?>
+                        <ol class="steps">
+                            <?php foreach ($pasos as $paso): ?>
+                                <li><?php echo htmlspecialchars($paso['descripcion']); ?></li>
+                            <?php endforeach; ?>
+                        </ol>
+                    <?php else: ?>
+                        <p>No hay pasos específicos disponibles para este ejercicio.</p>
+                    <?php endif; ?>
                 </div>
                 <a href="../Index.php" class="btn btn-custom">Volver al inicio</a>
             </div>
