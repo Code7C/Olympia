@@ -73,7 +73,15 @@ $result = $cnx->query($sql);
                     <?php while($row = $result->fetch_assoc()): ?>
                         <div class="card">
                             <div class="card-content">
-                                <h3><a download="Hola" href="/HTML/entrenadores.html"><?php echo $row['nombre']; ?></a></h3>
+                                <?php if (!empty($row['planes_url'])): ?>
+                                <h3>
+                                <a download="<?php echo $row['nombre']; ?>.pdf" href="<?php echo $row['planes_url']; ?>">
+                                <?php echo $row['nombre']; ?>
+                                </a>
+                                </h3>
+                               <?php else: ?>
+                                <h3><?php echo $row['nombre']; ?> (Archivo no disponible)</h3>
+                                <?php endif; ?>
                                 <p><?php echo $row['descripcion']; ?></p>
                                 <form method="post" onsubmit="likePlan(event, <?php echo $row['like_id']; ?>)">
                                 <input type="hidden" name="like_id" data value="<?php echo $row['like_id']; ?>">
@@ -82,7 +90,6 @@ $result = $cnx->query($sql);
                                 </button>
                                 </form>
                                 <span id="like-count-<?php echo $row['like_id']; ?>"><?php echo $row['likes']; ?> likes</span>
-
                             </div>
                         </div>
                     <?php endwhile; ?>

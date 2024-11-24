@@ -46,9 +46,9 @@ header h1 {
   align-items: center;
 }
 
-.photo img {
+.photo video {
   width: 100%;
-  max-width: 300px;
+  max-width: 600px;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   margin: 20px 0;

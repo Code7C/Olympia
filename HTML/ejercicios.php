@@ -4,36 +4,25 @@ if (!isset($_SESSION['id'])) {
     header("Location: /HTML/Login.php");
     exit;
 }
-
 include "../PHP/conexion.php";
-
-// Verificamos si el ID del ejercicio está en la URL
 if (isset($_GET['id'])) {
-    $id = intval($_GET['id']); // Convertimos a entero para evitar inyección SQL
-
-    // Consultamos el ejercicio específico en la base de datos
+    $id = intval($_GET['id']);
     $sql = "SELECT * FROM ejercicios_gimnasio WHERE id = ?";
     $stmt = $cnx->prepare($sql);
     $stmt->bind_param("i", $id);
     $stmt->execute();
     $result = $stmt->get_result();
-
-    // Verificamos si el ejercicio existe
     if ($result->num_rows > 0) {
         $ejercicio = $result->fetch_assoc();
     } else {
         echo "Ejercicio no encontrado.";
         exit;
     }
-
-    // Consultamos los pasos del ejercicio en la base de datos
     $sql_pasos = "SELECT numero_paso, descripcion FROM pasos_ejercicio WHERE ejercicio_id = ? ORDER BY numero_paso ASC";
     $stmt_pasos = $cnx->prepare($sql_pasos);
     $stmt_pasos->bind_param("i", $id);
     $stmt_pasos->execute();
     $result_pasos = $stmt_pasos->get_result();
-
-    // Almacenamos los pasos en un array
     $pasos = [];
     while ($row = $result_pasos->fetch_assoc()) {
         $pasos[] = $row;
@@ -43,7 +32,6 @@ if (isset($_GET['id'])) {
     exit;
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -61,7 +49,7 @@ if (isset($_GET['id'])) {
     <main class="container">
         <div class="exercise-content">
             <div class="photo">
-                <img src="<?php echo htmlspecialchars($ejercicio['imagen_url']); ?>" alt="<?php echo htmlspecialchars($ejercicio['nombre']); ?>">
+            <video src="<?php echo htmlspecialchars($ejercicio['gif_url']); ?>" alt="<?php echo htmlspecialchars($ejercicio['nombre']); ?>"controls></video>
             </div>
             <div class="text-container">
                 <h2>Descripción</h2>

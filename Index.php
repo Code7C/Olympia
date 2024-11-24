@@ -50,46 +50,10 @@ if (!isset($_SESSION['id']))
         <div class="overlay">
             <div class="intro-text">
                 <h1>NO PAIN NO GAIN</h1>
-                <p>Having a perfect body requires a lot of training. Nice-looking body and powerful organism are interconnected – and we can help you with both.</p>
+                <p>Tener un cuerpo perfecto requiere mucho entrenamiento. Un cuerpo bonito y un organismo fuerte están interconectados, y podemos ayudarte con ambos.</p>
             </div>
         </div>
     </section> 
-<section class="news">
-    <div class="container">
-        <div class="news-item left">
-            <img src="ruta/a/imagen1.jpg" alt="Noticia 1">
-            <div class="news-content">
-                <h3>Nuevo Entrenador Personal</h3>
-                <p>¡Tenemos un nuevo entrenador en nuestro equipo! Ven a conocerlo y recibe asesoramiento personalizado para alcanzar tus metas.</p>
-                <a href="#" class="read-more">Leer más</a>
-            </div>
-        </div>
-        <div class="news-item right">
-            <img src="ruta/a/imagen2.jpg" alt="Noticia 2">
-            <div class="news-content">
-                <h3>Desafío de 30 Días</h3>
-                <p>Únete al desafío de 30 días de acondicionamiento físico y mejora tu salud. ¡Inscríbete ya!</p>
-                <a href="#" class="read-more">Leer más</a>
-            </div>
-        </div>
-        <div class="news-item left">
-            <img src="ruta/a/imagen3.jpg" alt="Noticia 3">
-            <div class="news-content">
-                <h3>Actualización de Horarios</h3>
-                <p>Ajustamos nuestros horarios para darte más opciones. Consulta el nuevo calendario de clases aquí.</p>
-                <a href="#" class="read-more">Leer más</a>
-            </div>
-        </div>
-        <div class="news-item right">
-            <img src="ruta/a/imagen4.jpg" alt="Noticia 4">
-            <div class="news-content">
-                <h3>Consejos de Nutrición</h3>
-                <p>Descubre los mejores consejos de nutrición para mantenerte saludable y en forma todo el año.</p>
-                <a href="#" class="read-more">Leer más</a>
-            </div>
-        </div>
-    </div>
-</section>
     <footer class="footer">
         <div class="container">
             <p>&copy; 2024 Heracles. Todos los derechos reservados.</p>
