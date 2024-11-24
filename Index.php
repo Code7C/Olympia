@@ -58,6 +58,6 @@ if (!isset($_SESSION['id']))
         <div class="container">
             <p>&copy; 2024 Heracles. Todos los derechos reservados.</p>
         </div>
-    </footer>
+    </footer>   
 </body>
 </html>

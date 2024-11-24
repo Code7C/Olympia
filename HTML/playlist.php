@@ -75,7 +75,7 @@ $result = $cnx->query($sql);
                             <div class="card-content">
                                 <?php if (!empty($row['planes_url'])): ?>
                                 <h3>
-                                <a download="<?php echo $row['nombre']; ?>.pdf" href="<?php echo $row['planes_url']; ?>">
+                                <a download="<?php echo $row['nombre']; ?>.zip" href="<?php echo $row['planes_url']; ?>">
                                 <?php echo $row['nombre']; ?>
                                 </a>
                                 </h3>
